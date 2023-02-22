@@ -25,8 +25,39 @@ function playRound (playerSelection, computerSelection){
 
 }
 
-function game(){
+function keepScore(outcome){
+
+    // document.getElementById('player').textContent = "player score " + playerScore ;
+    // document.getElementById('computer').textContent = "computer score " + computerScore;
+     
+       if (playerScore == 5 || computerScore == 5){
+        document.getElementById('results').textContent ="GAME OVER" + computerScore + playerScore;
+        game();
+       }
+       else if (outcome.slice(0,6) == "player"){
+        playerScore++;
+        document.getElementById('player').textContent = "player score " + playerScore ;
+        document.getElementById('computer').textContent = "computer score " + computerScore;
+       }
+       else if (outcome.slice(0,8)== "computer"){
+        computerScore++;
+        document.getElementById('player').textContent = "player score " + playerScore ;
+        document.getElementById('computer').textContent = "computer score " + computerScore;
+       }
+      
+    //    document.getElementById('player').innerHTML = "player score" + playerScore ;
+    //    document.getElementById('computer').textContent = "computer score" + computerScore;
+      console.log("player score" + playerScore);
+      console.log("computer score" + computerScore);   
    
+    
+}
+
+function game(){
+    playerScore = 0;
+    computerScore = 0;
+    // document.getElementById('player').textContent = "player score " + playerScore;
+    // document.getElementById('computer').textContent = "computer score " + computerScore;
 
     
     
@@ -35,6 +66,8 @@ function game(){
        const computerSelection = getComputerChoice();
        const outcome = playRound(playerSelection, computerSelection);
        document.getElementById('results').textContent = outcome;
+       keepScore(outcome);
+       
     })
 
     document.getElementById('paper').addEventListener
@@ -42,6 +75,7 @@ function game(){
       const computerSelection = getComputerChoice();
       const outcome = playRound(playerSelection, computerSelection);  
       document.getElementById('results').textContent = outcome;
+      keepScore(outcome);
     })
 
     document.getElementById('scissors').addEventListener
@@ -49,11 +83,12 @@ function game(){
      const computerSelection = getComputerChoice();
      const outcome = playRound(playerSelection, computerSelection);
      document.getElementById('results').textContent = outcome;
+     keepScore(outcome);
    })
     
     
 
-    //    if (outcome.slice(0,6) == "player"){å
+    //    if (outcome.slice(0,6) == "player"){
     //     playerScore++
     //    }
     //    else if (outcome.slice(0,8)== "computer"){
