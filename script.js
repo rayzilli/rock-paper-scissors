@@ -30,27 +30,38 @@ function keepScore(outcome){
     // document.getElementById('player').textContent = "player score " + playerScore ;
     // document.getElementById('computer').textContent = "computer score " + computerScore;
      
-       if (playerScore == 5 || computerScore == 5){
-        document.getElementById('results').textContent ="GAME OVER" + computerScore + playerScore;
-        game();
-       }
-       else if (outcome.slice(0,6) == "player"){
+    //    if (playerScore == 5 || computerScore == 5){
+    //     document.getElementById('results').textContent ="GAME OVER" + computerScore + playerScore;
+    //     game();
+    //    }
+        if (outcome.slice(0,6) == "player" ){
         playerScore++;
         document.getElementById('player').textContent = "player score " + playerScore ;
         document.getElementById('computer').textContent = "computer score " + computerScore;
        }
-       else if (outcome.slice(0,8)== "computer"){
+       else if(outcome.slice(0,8)== "computer"){
         computerScore++;
         document.getElementById('player').textContent = "player score " + playerScore ;
         document.getElementById('computer').textContent = "computer score " + computerScore;
        }
+    
       
     //    document.getElementById('player').innerHTML = "player score" + playerScore ;
     //    document.getElementById('computer').textContent = "computer score" + computerScore;
-      console.log("player score" + playerScore);
-      console.log("computer score" + computerScore);   
+    //   console.log("player score" + playerScore);
+    //   console.log("computer score" + computerScore);   
    
     
+}
+
+function gameOver(){
+    if (playerScore == 5 || computerScore == 5){
+        document.getElementById('results').textContent ="GAME OVER";
+        document.getElementById("rock").disabled = true;
+        document.getElementById("paper").disabled = true;
+        document.getElementById("scissors").disabled = true;
+        game();
+       }
 }
 
 function game(){
@@ -67,6 +78,7 @@ function game(){
        const outcome = playRound(playerSelection, computerSelection);
        document.getElementById('results').textContent = outcome;
        keepScore(outcome);
+       gameOver();
        
     })
 
@@ -76,6 +88,7 @@ function game(){
       const outcome = playRound(playerSelection, computerSelection);  
       document.getElementById('results').textContent = outcome;
       keepScore(outcome);
+      gameOver();
     })
 
     document.getElementById('scissors').addEventListener
@@ -84,6 +97,7 @@ function game(){
      const outcome = playRound(playerSelection, computerSelection);
      document.getElementById('results').textContent = outcome;
      keepScore(outcome);
+     gameOver();
    })
     
     
