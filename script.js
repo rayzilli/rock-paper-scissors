@@ -19,9 +19,9 @@ function playRound (playerSelection, computerSelection){
             playerSelection  === "paper" && computerSelection === "rock"  ||
             playerSelection  === "scissors"  && computerSelection === "paper")
         {
-     return "player" + " " + playerSelection + " " +"beats" + " " +computerSelection;
+     return "Player" + " " + playerSelection + " " +"beats Computer " + " " +computerSelection;
    }
-   else return "computer" + " " + computerSelection + " " + "beats" + " " + playerSelection; 
+   else return "computer" + " " + computerSelection + " " + "beats Player" + " " + playerSelection; 
 
 }
 
@@ -56,7 +56,7 @@ function keepScore(outcome){
 
 function gameOver(){
     if (playerScore == 5 || computerScore == 5){
-        document.getElementById('results').textContent ="GAME OVER";
+        document.getElementById('results').textContent ="GAME OVER - Refresh page to play again.";
         document.getElementById("rock").disabled = true;
         document.getElementById("paper").disabled = true;
         document.getElementById("scissors").disabled = true;
